@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document with TOC</title>
+    <style>
+        /* Add some basic styling */
+        #toc {
+            margin-bottom: 20px;
+        }
+        #toc ul {
+            list-style-type: none;
+            padding-left: 1em;
+        }
+        #toc ul ul {
+            margin-left: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id="toc"></div>
+
+    <h1>Introduction</h1>
+    <p>Content of Introduction...
+        jndjfn
+        cnksdnfs
+        ndcosdn
+        nfsifdns
+        nsidnf
+        nosn
+        nskfnZ
+        fbszkf
+    </p>
+
+    <h2>Overview</h2>
+    <p>Content of Overview...</p>
+
+    <h2>Details</h2>
+    <p>Content of Details...</p>
+
+    <h3>Subsection</h3>
+    <p>Content of Subsection...</p>
+
+    <h1>Conclusion</h1>
+
+    <p>Content of Conclusion...
+        nfdkidsnf
+        niskd
+        nfsjdf
+        nfsjdfnksfdn
+        nsb
+        nfksdjf
+        nsidnfnfkdjf
+        nfcks
+        nfksdjfdk
+         djs
+         bsdj
+         
+    </p>
+
+    <script>
+        function generateTOC() {
+            const insertTo=document.getElementById("toc")
+            const headers=document.querySelectorAll('h1,h2,h3,h4,h5')
+            const unorderedList=document.createElement('ul')
+                headers.forEach((header)=>{
+                    
+                    const content=(header.textContent)
+                    const an=document.createElement('a')
+                    an.id=content.toLowerCase().replace(/\s+/g,'-')
+                    header.id=an.id
+                    header.insertAdjacentElement('beforebegin',an)
+                    let anchor=document.createElement("a")
+                    anchor.href=`#${header.id}`
+                    anchor.text=content
+                    const li=document.createElement('li')
+                    li.append(anchor)
+                    unorderedList.append(li)
+                })
+                insertTo.append(unorderedList)
+            }
+        
+
+        document.addEventListener('DOMContentLoaded', generateTOC);
+    </script>
+</body>
+</html>
